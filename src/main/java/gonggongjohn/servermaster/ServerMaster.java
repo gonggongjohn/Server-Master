@@ -22,15 +22,16 @@ public class ServerMaster {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         isXrayEnabled = Checker.initChecker();
+        proxy.preInit(e);
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
-
+        proxy.init(e);
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
-
+        proxy.postInit(e);
     }
 }

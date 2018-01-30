@@ -3,23 +3,22 @@ package gonggongjohn.servermaster.server;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import gonggongjohn.servermaster.network.MessageCheckXRay;
 import gonggongjohn.servermaster.network.NetworkLoader;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraftforge.common.MinecraftForge;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@SideOnly(Side.SERVER)
 public class EventHandler {
     public static List<String> checkedPlayers = new ArrayList<String>();
     public static List<String> cheatingPlayers = new ArrayList<String>();
 
     public EventHandler() {
         FMLCommonHandler.instance().bus().register(this);
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     @SubscribeEvent
@@ -42,7 +41,7 @@ public class EventHandler {
                 e.printStackTrace();
             }
             if (!EventHandler.checkedPlayers.contains(player.getGameProfile().getName())) {
-                ((EntityPlayerMP) player).playerNetServerHandler.kickPlayerFromServer("请不要随意改动客户端");
+                ((EntityPlayerMP) player).playerNetServerHandler.kickPlayerFromServer("Huh cheater?");
             }
         });
     }
