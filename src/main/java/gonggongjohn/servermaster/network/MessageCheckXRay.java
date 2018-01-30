@@ -5,6 +5,7 @@ import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import gonggongjohn.servermaster.ServerMaster;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
 
 public class MessageCheckXRay implements IMessage {
     @Override
@@ -21,7 +22,7 @@ public class MessageCheckXRay implements IMessage {
 
         @Override
         public MessageCheckResult onMessage(MessageCheckXRay message, MessageContext ctx) {
-            return new MessageCheckResult(ServerMaster.isXrayEnabled);
+            return new MessageCheckResult(ServerMaster.isXrayEnabled, Minecraft.getMinecraft().thePlayer.getGameProfile().getName());
         }
     }
 }

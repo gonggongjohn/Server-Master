@@ -4,6 +4,7 @@ import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
+import gonggongjohn.servermaster.server.EventHandler;
 import io.netty.buffer.ByteBuf;
 
 public class MessageCheckResult implements IMessage {
@@ -31,7 +32,11 @@ public class MessageCheckResult implements IMessage {
 
         @Override
         public IMessage onMessage(MessageCheckResult message, MessageContext ctx) {
-
+            EventHandler.checkedPlayers.add(message.player);
+            if (!message.result) {
+                EventHandler.cheatingPlayers.add(message.player);
+                System.out.printf("检测到%s作弊\n", message.player);
+            }
             return null;
         }
     }

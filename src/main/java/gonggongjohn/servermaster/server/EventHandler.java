@@ -1,0 +1,43 @@
+package gonggongjohn.servermaster.server;
+
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import gonggongjohn.servermaster.network.MessageCheckXRay;
+import gonggongjohn.servermaster.network.NetworkLoader;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@SideOnly(Side.SERVER)
+public class EventHandler {
+    public static List<String> checkedPlayers = new ArrayList<String>();
+    public static List<String> cheatingPlayers = new ArrayList<String>();
+
+    public EventHandler() {
+        FMLCommonHandler.instance().bus().register(this);
+    }
+
+    @SubscribeEvent
+    public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
+        NetworkLoader.instance.sendTo(new MessageCheckXRay(), (EntityPlayerMP) event.player);
+        checkPlayer(event.player);
+    }
+
+    private static void checkPlayer(EntityPlayer player) {
+        new Thread(() -> {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if (!EventHandler.checkedPlayers.contains(player.getGameProfile().getName())) {
+                ((EntityPlayerMP) player).playerNetServerHandler.kickPlayerFromServer("请不要随意改动客户端");
+            }
+        });
+    }
+}
