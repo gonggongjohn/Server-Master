@@ -7,7 +7,7 @@ import gonggongjohn.servermaster.Checker;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 
-public class MessageCheckXRay implements IMessage {
+public class MessageCheckCheat implements IMessage {
     @Override
     public void fromBytes(ByteBuf buf) {
 
@@ -18,13 +18,14 @@ public class MessageCheckXRay implements IMessage {
 
     }
 
-    public static class MessageHandler implements IMessageHandler<MessageCheckXRay, MessageCheckResult> {
+    public static class MessageHandler implements IMessageHandler<MessageCheckCheat, MessageCheckResult> {
 
         @Override
-        public MessageCheckResult onMessage(MessageCheckXRay message, MessageContext ctx) {
+        public MessageCheckResult onMessage(MessageCheckCheat message, MessageContext ctx) {
             MessageCheckResult msg = new MessageCheckResult();
             msg.player = Minecraft.getMinecraft().thePlayer.getGameProfile().getName();
             msg.result = Checker.initChecker();
+            msg.gamma = Minecraft.getMinecraft().gameSettings.gammaSetting;
             return msg;
         }
     }

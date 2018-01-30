@@ -4,11 +4,11 @@ import gonggongjohn.servermaster.server.ServerConstants;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 
-public class CommandAllowXRay extends CommandBase {
+public class CommandAllowCheat extends CommandBase {
 
     @Override
     public String getCommandName() {
-        return "allowxray";
+        return "allowcheat";
     }
 
     @Override
@@ -18,7 +18,7 @@ public class CommandAllowXRay extends CommandBase {
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) {
-        ServerConstants.allowXRay = args[0].equals("true");
+        ServerConstants.allowCheat = args[0].equals("true");
     }
 
     @Override
