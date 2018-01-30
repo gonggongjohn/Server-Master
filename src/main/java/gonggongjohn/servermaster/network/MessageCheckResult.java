@@ -10,17 +10,20 @@ import net.minecraft.server.MinecraftServer;
 
 public class MessageCheckResult implements IMessage {
     boolean result;
+    float gamma;
     String player;
 
     @Override
     public void fromBytes(ByteBuf buf) {
         result = buf.readBoolean();
+        gamma = buf.readFloat();
         player = ByteBufUtils.readUTF8String(buf);
     }
 
     @Override
     public void toBytes(ByteBuf buf) {
         buf.writeBoolean(result);
+        buf.writeFloat(gamma);
         ByteBufUtils.writeUTF8String(buf, player);
     }
 
@@ -29,9 +32,9 @@ public class MessageCheckResult implements IMessage {
         @Override
         public IMessage onMessage(MessageCheckResult message, MessageContext ctx) {
             ServerConstants.checkedPlayers.add(message.player);
-            if (message.result) {
+            if (message.result || message.gamma > 1.0) {
                 ServerConstants.cheatingPlayers.add(message.player);
-                if (!ServerConstants.allowXRay) {
+                if (!ServerConstants.allowCheat) {
                     MinecraftServer.getServer().getConfigurationManager().func_152612_a(message.player).playerNetServerHandler.kickPlayerFromServer("Do not cheat");
                 }
             }

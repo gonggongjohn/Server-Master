@@ -10,6 +10,6 @@ public class NetworkLoader {
 
     public NetworkLoader() {
         instance.registerMessage(MessageCheckResult.MessageHandler.class, MessageCheckResult.class, 0, Side.SERVER);
-        instance.registerMessage(MessageCheckXRay.MessageHandler.class, MessageCheckXRay.class, 1, Side.CLIENT);
+        instance.registerMessage(MessageCheckCheat.MessageHandler.class, MessageCheckCheat.class, 1, Side.CLIENT);
     }
 }
