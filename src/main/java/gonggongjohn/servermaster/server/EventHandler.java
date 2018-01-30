@@ -5,7 +5,6 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import gonggongjohn.servermaster.network.MessageCheckXRay;
 import gonggongjohn.servermaster.network.NetworkLoader;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -24,25 +23,11 @@ public class EventHandler {
     @SubscribeEvent
     public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         NetworkLoader.instance.sendTo(new MessageCheckXRay(), (EntityPlayerMP) event.player);
-        checkPlayer(event.player);
     }
 
     @SubscribeEvent
     public void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
         if (checkedPlayers.contains(event.player.getGameProfile().getName()))
             checkedPlayers.remove(event.player.getGameProfile().getName());
-    }
-
-    private static void checkPlayer(EntityPlayer player) {
-        new Thread(() -> {
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            if (!EventHandler.checkedPlayers.contains(player.getGameProfile().getName())) {
-                ((EntityPlayerMP) player).playerNetServerHandler.kickPlayerFromServer("Huh cheater?");
-            }
-        }).run();
     }
 }

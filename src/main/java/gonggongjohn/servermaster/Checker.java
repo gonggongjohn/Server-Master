@@ -17,10 +17,8 @@ public class Checker {
     public static String strc = "X";
 
     public static boolean initChecker() {
-        File filea = new File(System.getProperty("user.dir") + stra +strb + strc + strd + stre + strf);
-        if(filea.exists()) checka = true;
-        File fileb = new File(System.getProperty("user.dir") + strg +strh + strc + strd + stre + stri + strj);
-        if(fileb.exists()) checkb = true;
+        checka = new File(System.getProperty("user.dir") + stra + strb + strc + strd + stre + strf).exists();
+        checkb = new File(System.getProperty("user.dir") + strg + strh + strc + strd + stre + stri + strj).exists();
         return (checka || checkb);
     }
 }
