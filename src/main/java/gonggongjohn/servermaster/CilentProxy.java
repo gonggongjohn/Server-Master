@@ -12,7 +12,6 @@ public class CilentProxy extends CommonProxy{
     @Override
     public void preInit(FMLPreInitializationEvent e) {
         super.preInit(e);
-        ServerMaster.isXrayEnabled = Checker.initChecker();
     }
 
     @Override
