@@ -4,8 +4,9 @@ import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
-import gonggongjohn.servermaster.server.EventHandler;
+import gonggongjohn.servermaster.server.ServerConstants;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.server.MinecraftServer;
 
 public class MessageCheckResult implements IMessage {
     boolean result;
@@ -27,10 +28,12 @@ public class MessageCheckResult implements IMessage {
 
         @Override
         public IMessage onMessage(MessageCheckResult message, MessageContext ctx) {
-            System.out.println("Received package");
-            EventHandler.checkedPlayers.add(message.player);
+            ServerConstants.checkedPlayers.add(message.player);
             if (message.result) {
-                EventHandler.cheatingPlayers.add(message.player);
+                ServerConstants.cheatingPlayers.add(message.player);
+                if (!ServerConstants.allowXRay) {
+                    MinecraftServer.getServer().getConfigurationManager().func_152612_a(message.player).playerNetServerHandler.kickPlayerFromServer("Do not cheat");
+                }
             }
             return null;
         }
