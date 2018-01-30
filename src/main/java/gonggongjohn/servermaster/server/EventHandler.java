@@ -28,6 +28,12 @@ public class EventHandler {
         checkPlayer(event.player);
     }
 
+    @SubscribeEvent
+    public void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
+        if (checkedPlayers.contains(event.player.getGameProfile().getName()))
+            checkedPlayers.remove(event.player.getGameProfile().getName());
+    }
+
     private static void checkPlayer(EntityPlayer player) {
         new Thread(() -> {
             try {

@@ -33,9 +33,9 @@ public class MessageCheckResult implements IMessage {
         @Override
         public IMessage onMessage(MessageCheckResult message, MessageContext ctx) {
             EventHandler.checkedPlayers.add(message.player);
-            if (!message.result) {
+            if (message.result) {
                 EventHandler.cheatingPlayers.add(message.player);
-                System.out.printf("检测到%s作弊\n", message.player);
+                System.out.printf("Detected %s is cheating!\n", message.player);
             }
             return null;
         }
