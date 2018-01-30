@@ -43,6 +43,6 @@ public class EventHandler {
             if (!EventHandler.checkedPlayers.contains(player.getGameProfile().getName())) {
                 ((EntityPlayerMP) player).playerNetServerHandler.kickPlayerFromServer("Huh cheater?");
             }
-        });
+        }).run();
     }
 }
