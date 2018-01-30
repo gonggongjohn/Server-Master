@@ -5,7 +5,7 @@ import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import gonggongjohn.servermaster.ServerMaster;
+import gonggongjohn.servermaster.Checker;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 
@@ -25,7 +25,10 @@ public class MessageCheckXRay implements IMessage {
         @Override
         @SideOnly(Side.CLIENT)
         public MessageCheckResult onMessage(MessageCheckXRay message, MessageContext ctx) {
-            return new MessageCheckResult(ServerMaster.isXrayEnabled, Minecraft.getMinecraft().thePlayer.getGameProfile().getName());
+            MessageCheckResult msg = new MessageCheckResult();
+            msg.player = Minecraft.getMinecraft().thePlayer.getGameProfile().getName();
+            msg.result = Checker.initChecker();
+            return msg;
         }
     }
 }

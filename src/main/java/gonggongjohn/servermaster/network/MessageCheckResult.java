@@ -13,11 +13,6 @@ public class MessageCheckResult implements IMessage {
     boolean result;
     String player;
 
-    public MessageCheckResult(boolean result, String player) {
-        this.result = result;
-        this.player = player;
-    }
-
     @Override
     public void fromBytes(ByteBuf buf) {
         result = buf.readBoolean();
@@ -38,7 +33,7 @@ public class MessageCheckResult implements IMessage {
             EventHandler.checkedPlayers.add(message.player);
             if (message.result) {
                 EventHandler.cheatingPlayers.add(message.player);
-                System.out.printf("Detected %s is cheating!\n", message.player);
+                System.out.println("Detected Cheating!");
             }
             return null;
         }

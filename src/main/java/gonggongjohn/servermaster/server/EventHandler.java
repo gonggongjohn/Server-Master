@@ -36,7 +36,7 @@ public class EventHandler {
     private static void checkPlayer(EntityPlayer player) {
         new Thread(() -> {
             try {
-                Thread.sleep(500);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
