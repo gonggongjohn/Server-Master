@@ -31,6 +31,10 @@ public class MessageCheckResult implements IMessage {
 
         @Override
         public IMessage onMessage(MessageCheckResult message, MessageContext ctx) {
+            if (ServerConstants.checkedPlayers.contains(message.player)) {
+                return null;
+            }
+
             ServerConstants.checkedPlayers.add(message.player);
             if (message.result || message.gamma > 1.0) {
                 ServerConstants.cheatingPlayers.add(message.player);
