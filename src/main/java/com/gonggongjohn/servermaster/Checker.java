@@ -1,4 +1,4 @@
-package gonggongjohn.servermaster;
+package com.gonggongjohn.servermaster;
 
 import java.io.File;
 

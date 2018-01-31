@@ -1,6 +1,6 @@
-package gonggongjohn.servermaster.server.cmd;
+package com.gonggongjohn.servermaster.server.cmd;
 
-import gonggongjohn.servermaster.server.ServerConstants;
+import com.gonggongjohn.servermaster.server.ServerConstants;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 

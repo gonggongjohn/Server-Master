@@ -1,10 +1,10 @@
-package gonggongjohn.servermaster.server;
+package com.gonggongjohn.servermaster.server;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
-import gonggongjohn.servermaster.network.MessageCheckCheat;
-import gonggongjohn.servermaster.network.NetworkLoader;
+import com.gonggongjohn.servermaster.network.MessageCheckCheat;
+import com.gonggongjohn.servermaster.network.NetworkLoader;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.common.MinecraftForge;
 

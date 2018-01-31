@@ -3,10 +3,10 @@
   "modid": "servermaster",
   "name": "Server Master",
   "description": "A Guard Of The Origin Of Peace Server,To Avoid Some Unnecessary Cheat.",
-  "version": "1.0.0",
+  "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "https://github.com/gonggongjohn",
-  "updateUrl": "https://github.com/gonggongjohn",
+  "url": "",
+  "updateUrl": "",
   "authorList": ["GONGGONGJOHN, Seraph_JACK"],
   "screenshots": [],
   "dependencies": []

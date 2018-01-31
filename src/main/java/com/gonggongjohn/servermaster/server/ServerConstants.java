@@ -1,4 +1,4 @@
-package gonggongjohn.servermaster.server;
+package com.gonggongjohn.servermaster.server;
 
 import java.util.ArrayList;
 import java.util.List;

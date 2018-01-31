@@ -1,9 +1,9 @@
-package gonggongjohn.servermaster.network;
+package com.gonggongjohn.servermaster.network;
 
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
-import gonggongjohn.servermaster.ServerMaster;
+import com.gonggongjohn.servermaster.ServerMaster;
 
 public class NetworkLoader {
     public static SimpleNetworkWrapper instance = NetworkRegistry.INSTANCE.newSimpleChannel(ServerMaster.MODID);

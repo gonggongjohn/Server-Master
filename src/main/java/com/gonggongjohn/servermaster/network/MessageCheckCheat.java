@@ -1,9 +1,9 @@
-package gonggongjohn.servermaster.network;
+package com.gonggongjohn.servermaster.network;
 
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
-import gonggongjohn.servermaster.Checker;
+import com.gonggongjohn.servermaster.Checker;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 
