@@ -1,1 +1,23 @@
-A Minecraft Server Assistant That Aims On Keeping The Fairness Of The Game
+#Server Master
+一个致力于解决Minecraft模组服务器中一些现存的反作弊插件无法检测到的作弊方法的模组，以维护游戏的平衡性
+
+
+##Features
+* 轻巧，便于使用，几乎不消耗服务器资源
+* 基于SimpleIMPL，每当版本更新时只需要更新服务端模组即可使用
+* 可以检测到不显示在MOD加载列表中的作弊模组，例如：X-RAY 15
+* 可以检测到对游戏基础配置文件的异常改动
+
+##Information
+* Minecraft版本：1.7.10
+* Forge版本：10.13.4.1614
+
+##Changelog
+###1.1.1
+* 规范了包的命名
+* 修正了部分BUG
+
+###1.1.0
+* 优化了检测算法
+* 加入了网络部分
+* 加入了对GAMMA值调整的检测
