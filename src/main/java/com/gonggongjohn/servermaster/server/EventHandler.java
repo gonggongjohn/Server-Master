@@ -1,10 +1,15 @@
-package gonggongjohn.servermaster.server;
+package com.gonggongjohn.servermaster.server;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
+<<<<<<< HEAD:src/main/java/gonggongjohn/servermaster/server/EventHandler.java
 import gonggongjohn.servermaster.network.MessageCheckCheat;
 import gonggongjohn.servermaster.network.NetworkLoader;
+=======
+import com.gonggongjohn.servermaster.network.MessageCheckCheat;
+import com.gonggongjohn.servermaster.network.NetworkLoader;
+>>>>>>> c6c2cc3cb3a6f47d52240d80fba64338fef4731b:src/main/java/com/gonggongjohn/servermaster/server/EventHandler.java
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.common.MinecraftForge;
 

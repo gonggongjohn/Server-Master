@@ -1,10 +1,10 @@
-package gonggongjohn.servermaster.network;
+package com.gonggongjohn.servermaster.network;
 
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
-import gonggongjohn.servermaster.server.ServerConstants;
+import com.gonggongjohn.servermaster.server.ServerConstants;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.server.MinecraftServer;
 
@@ -31,6 +31,10 @@ public class MessageCheckResult implements IMessage {
 
         @Override
         public IMessage onMessage(MessageCheckResult message, MessageContext ctx) {
+            if (ServerConstants.checkedPlayers.contains(message.player)) {
+                return null;
+            }
+
             ServerConstants.checkedPlayers.add(message.player);
             if (message.result || message.gamma > 1.0) {
                 ServerConstants.cheatingPlayers.add(message.player);

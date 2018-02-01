@@ -1,4 +1,4 @@
-package gonggongjohn.servermaster.server.cmd;
+package com.gonggongjohn.servermaster.server.cmd;
 
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 

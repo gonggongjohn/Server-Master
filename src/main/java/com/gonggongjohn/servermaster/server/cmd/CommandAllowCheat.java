@@ -1,14 +1,14 @@
-package gonggongjohn.servermaster.server.cmd;
+package com.gonggongjohn.servermaster.server.cmd;
 
-import gonggongjohn.servermaster.server.ServerConstants;
+import com.gonggongjohn.servermaster.server.ServerConstants;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.util.ChatComponentTranslation;
 
-public class CommandShowCheaters extends CommandBase {
+public class CommandAllowCheat extends CommandBase {
+
     @Override
     public String getCommandName() {
-        return "showcheaters";
+        return "allowcheat";
     }
 
     @Override
@@ -18,8 +18,7 @@ public class CommandShowCheaters extends CommandBase {
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) {
-        for (String id : ServerConstants.cheatingPlayers)
-            CommandBase.getCommandSenderAsPlayer(sender).addChatComponentMessage(new ChatComponentTranslation(id));
+        ServerConstants.allowCheat = args[0].equals("true");
     }
 
     @Override

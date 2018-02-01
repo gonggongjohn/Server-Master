@@ -1,4 +1,4 @@
-package gonggongjohn.servermaster;
+package com.gonggongjohn.servermaster;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -11,9 +11,9 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 public class ServerMaster {
     public static final String MODID = "servermaster";
     public static final String NAME = "Server Master";
-    public static final String VERSION = "1.0.0";
+    public static final String VERSION = "@version@";
 
-    @SidedProxy(clientSide = "gonggongjohn.servermaster.CilentProxy", serverSide = "gonggongjohn.servermaster.ServerProxy")
+    @SidedProxy(clientSide = "com.gonggongjohn.servermaster.CilentProxy", serverSide = "com.gonggongjohn.servermaster.ServerProxy")
     public static CommonProxy proxy;
 
     @Mod.Instance
