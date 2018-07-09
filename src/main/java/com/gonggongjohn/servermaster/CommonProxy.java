@@ -4,11 +4,11 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import com.gonggongjohn.servermaster.network.NetworkLoader;
+import com.gonggongjohn.servermaster.network.NetworkHandler;
 
 public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
-        new NetworkLoader();
+        new NetworkHandler();
     }
 
     public void init(FMLInitializationEvent e) {

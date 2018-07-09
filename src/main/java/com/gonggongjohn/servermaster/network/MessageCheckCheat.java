@@ -23,9 +23,7 @@ public class MessageCheckCheat implements IMessage {
         @Override
         public MessageCheckResult onMessage(MessageCheckCheat message, MessageContext ctx) {
             MessageCheckResult msg = new MessageCheckResult();
-            msg.player = Minecraft.getMinecraft().thePlayer.getGameProfile().getName();
-            msg.result = Checker.initChecker();
-            msg.gamma = Minecraft.getMinecraft().gameSettings.gammaSetting;
+            msg.result = Checker.initChecker() ||  Minecraft.getMinecraft().gameSettings.gammaSetting > 1.0F;
             return msg;
         }
     }
