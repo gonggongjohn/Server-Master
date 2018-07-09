@@ -1,6 +1,8 @@
 buildscript {
     repositories {
-        mavenCentral()
+        mavenCentral() {
+			url = "http://repository.jboss.org/nexus/content/groups/public"
+		}
         maven {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
