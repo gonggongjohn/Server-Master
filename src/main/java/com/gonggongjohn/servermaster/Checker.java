@@ -11,7 +11,7 @@ public class Checker {
         String stra = "\\con";
         String strc = "X";
         boolean checka = new File(System.getProperty("user.dir") + stra + strb + strc + strd + stre + strf).exists();
-        String strh = "od\\";
+        String strh = "ods\\";
         String strj = ".jar";
         String strg = "\\m";
         String stri = "-15";
