@@ -9,9 +9,9 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.server.MinecraftServer;
 
 public class MessageCheckResult implements IMessage {
-    boolean result;
-    float gamma;
-    String player;
+    public boolean result;
+    public float gamma;
+    public String player;
 
     @Override
     public void fromBytes(ByteBuf buf) {

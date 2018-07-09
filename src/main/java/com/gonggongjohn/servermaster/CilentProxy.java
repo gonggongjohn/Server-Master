@@ -1,14 +1,15 @@
 package com.gonggongjohn.servermaster;
 
+import com.gonggongjohn.servermaster.server.cmd.CommandLoader;
+import com.gonggongjohn.servermaster.trick.CommandClientKick;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import com.gonggongjohn.servermaster.server.cmd.CommandLoader;
+import net.minecraftforge.client.ClientCommandHandler;
 
 
-public class CilentProxy extends CommonProxy{
-
+public class CilentProxy extends CommonProxy {
 
 
     @Override
@@ -19,6 +20,7 @@ public class CilentProxy extends CommonProxy{
     @Override
     public void init(FMLInitializationEvent e) {
         super.init(e);
+        ClientCommandHandler.instance.registerCommand(new CommandClientKick());
     }
 
     @Override

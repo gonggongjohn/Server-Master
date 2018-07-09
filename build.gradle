@@ -9,9 +9,23 @@ buildscript {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
+		maven {
+			url 'http://repository.jboss.org/nexus/content/groups/public' 
+		}
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    }
+}
+
+allprojects {
+    repositories {
+		jcenter() {
+			url = 'http://jcenter.bintray.com/'
+		}
+        maven {
+			url 'http://repository.jboss.org/nexus/content/groups/public' 
+		}
     }
 }
 
