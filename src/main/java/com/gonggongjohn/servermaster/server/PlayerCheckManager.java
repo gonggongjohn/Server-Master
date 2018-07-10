@@ -16,9 +16,10 @@ public class PlayerCheckManager {
         MinecraftForge.EVENT_BUS.register(this);
         Thread CHECKING_THREAD = new Thread(() -> {
             while (!cq.isEmpty()) {
-                CheckingPlayer cp = cq.poll();
-                if (cp != null && cp.startedTime - System.currentTimeMillis() > 10000) {
-                    MinecraftServer.getServer().getConfigurationManager().func_152612_a(cp.name).playerNetServerHandler.kickPlayerFromServer("Server-master checker timed out.");
+                for (CheckingPlayer cp : cq) {
+                    if (cp != null && cp.startedTime - System.currentTimeMillis() > 10000) {
+                        MinecraftServer.getServer().getConfigurationManager().func_152612_a(cp.name).playerNetServerHandler.kickPlayerFromServer("Server-master checker timed out.");
+                    }
                 }
             }
             try {
