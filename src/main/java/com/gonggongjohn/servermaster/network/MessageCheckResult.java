@@ -6,8 +6,14 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 
 public class MessageCheckResult implements IMessage {
+    /**
+     * true:玩家作弊
+     * false:玩家正常
+     */
     boolean result;
 
     @Override
@@ -24,12 +30,12 @@ public class MessageCheckResult implements IMessage {
 
         @Override
         public IMessage onMessage(MessageCheckResult message, MessageContext ctx) {
-            String player = ctx.getServerHandler().playerEntity.getGameProfile().getName();
-            ServerProxy.CHECK_MANAGER.checkPassed(player);
+            EntityPlayer player = ctx.getServerHandler().playerEntity;
+            ServerProxy.CHECK_MANAGER.checkPassed(player.getGameProfile().getName());
             if (message.result) {
-                ServerConstants.cheatingPlayers.add(player);
+                ServerConstants.cheatingPlayers.add(player.getGameProfile().getName());
                 if (!ServerConstants.allowCheat) {
-                    ctx.getServerHandler().playerEntity.playerNetServerHandler.kickPlayerFromServer("Do not cheat");
+                    ((EntityPlayerMP) player).playerNetServerHandler.kickPlayerFromServer("Do not cheat");
                 }
             }
             return null;

@@ -1,8 +1,11 @@
 package com.gonggongjohn.servermaster.server;
 
+import com.gonggongjohn.servermaster.network.MessageCheckCheat;
+import com.gonggongjohn.servermaster.network.NetworkHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -17,7 +20,7 @@ public class PlayerCheckManager {
         Thread CHECKING_THREAD = new Thread(() -> {
             while (!cq.isEmpty()) {
                 for (CheckingPlayer cp : cq) {
-                    if (cp != null && cp.startedTime - System.currentTimeMillis() > 10000) {
+                    if (cp != null && System.currentTimeMillis() - cp.startTime > 10000) {
                         MinecraftServer.getServer().getConfigurationManager().func_152612_a(cp.name).playerNetServerHandler.kickPlayerFromServer("Server-master checker timed out.");
                     }
                 }
@@ -27,12 +30,13 @@ public class PlayerCheckManager {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        });
+        }, "ServerMaster-CHECKER");
         CHECKING_THREAD.start();
     }
 
     @SubscribeEvent
     public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
+        NetworkHandler.instance.sendTo(new MessageCheckCheat(), (EntityPlayerMP) event.player);
         cq.add(new CheckingPlayer(event.player.getGameProfile().getName()));
     }
 
@@ -51,11 +55,11 @@ public class PlayerCheckManager {
 
     private static class CheckingPlayer {
         String name;
-        long startedTime;
+        long startTime;
 
         CheckingPlayer(String name) {
             this.name = name;
-            startedTime = System.currentTimeMillis();
+            startTime = System.currentTimeMillis();
         }
     }
 }

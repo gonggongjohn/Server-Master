@@ -1,12 +1,11 @@
 package com.gonggongjohn.servermaster;
 
 import com.gonggongjohn.servermaster.server.PlayerCheckManager;
+import com.gonggongjohn.servermaster.server.cmd.CommandLoader;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import com.gonggongjohn.servermaster.server.EventHandler;
-import com.gonggongjohn.servermaster.server.cmd.CommandLoader;
 
 public class ServerProxy extends CommonProxy {
     public static final PlayerCheckManager CHECK_MANAGER = new PlayerCheckManager();
@@ -19,7 +18,6 @@ public class ServerProxy extends CommonProxy {
     @Override
     public void init(FMLInitializationEvent e) {
         super.init(e);
-        new EventHandler();
     }
 
     @Override
