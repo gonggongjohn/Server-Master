@@ -18,8 +18,7 @@ public class CommandShowCheaters extends CommandBase {
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) {
-        for (String id : ServerConstants.cheatingPlayers)
-            CommandBase.getCommandSenderAsPlayer(sender).addChatComponentMessage(new ChatComponentTranslation(id));
+        ServerConstants.cheatingPlayers.forEach((s) -> CommandBase.getCommandSenderAsPlayer(sender).addChatComponentMessage(new ChatComponentTranslation(s)));
     }
 
     @Override
