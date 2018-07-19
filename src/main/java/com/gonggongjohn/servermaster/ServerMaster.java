@@ -7,11 +7,11 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = ServerMaster.MODID, name = ServerMaster.NAME, version = ServerMaster.VERSION, useMetadata = true, acceptableRemoteVersions = "*")
+@Mod(modid = ServerMaster.MODID, name = ServerMaster.NAME, version = ServerMaster.VERSION, useMetadata = true)
 public class ServerMaster {
     public static final String MODID = "servermaster";
     public static final String NAME = "Server Master";
-    public static final String VERSION = "@version@";
+    public static final String VERSION = "1.1.3";
 
     @SidedProxy(clientSide = "com.gonggongjohn.servermaster.CilentProxy", serverSide = "com.gonggongjohn.servermaster.ServerProxy")
     public static CommonProxy proxy;
