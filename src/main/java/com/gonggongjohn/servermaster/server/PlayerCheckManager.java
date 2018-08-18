@@ -21,7 +21,9 @@ public class PlayerCheckManager {
             while (!cq.isEmpty()) {
                 for (CheckingPlayer cp : cq) {
                     if (cp != null && System.currentTimeMillis() - cp.startTime > 10000) {
-                        MinecraftServer.getServer().getConfigurationManager().func_152612_a(cp.name).playerNetServerHandler.kickPlayerFromServer("Server-master checker timed out.");
+                        MinecraftServer.getServer().getConfigurationManager()
+                                .func_152612_a(cp.name).playerNetServerHandler
+                                .kickPlayerFromServer("Server-master checker timed out.");
                     }
                 }
             }
